@@ -1,14 +1,23 @@
 import './styles/style.sass'
-import file from './file.html'
+import headerHtml from './header.html'
+import navHtml from './nav.html'
+import mainHtml from './main.html'
+import footerHtml from './footer.html'
 
-function component() {
-    const element = document.createElement('div')
-    element.classList.add('test')
-    element.innerHTML = 'nothing is here'
-    return element
+class App {
+    app: HTMLDivElement
+
+    constructor() {
+        const appElement = document.createElement('div')
+        appElement.setAttribute('id', 'app')
+        this.app = document.body.appendChild(appElement)
+    }
+
+    insertHtml(html: string) {
+        this.app.innerHTML += html
+    }
 }
 
-let child = document.body.appendChild(component())
-child.innerHTML = file
-
-//console.log(file);
+const app = new App()
+let contents = [headerHtml, navHtml, mainHtml, footerHtml]
+contents.forEach((item) => app.insertHtml(item))
