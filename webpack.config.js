@@ -27,6 +27,10 @@ module.exports = {
                 test: /\.html$/i,
                 loader: 'html-loader',
             },
+            {
+                test: /\.png/,
+                type: 'asset/resource',
+            },
         ],
     },
     resolve: {
@@ -37,4 +41,10 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
     },
     plugins: [new HtmlWebpackPlugin({ title: 'Hello' })],
+    devServer: {
+        contentBase: path.join(__dirname, 'dist'),
+        compress: true,
+        port: 9000,
+    },
+    mode: 'development',
 }

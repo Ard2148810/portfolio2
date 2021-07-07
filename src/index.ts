@@ -8,6 +8,7 @@ class App {
     app: HTMLDivElement
 
     constructor() {
+        document.body.classList.add('page-fill')
         const appElement = document.createElement('div')
         appElement.setAttribute('id', 'app')
         this.app = document.body.appendChild(appElement)
