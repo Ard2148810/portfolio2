@@ -1,6 +1,6 @@
 import './styles/style.sass'
 import headerHtml from './header.html'
-import navHtml from './nav.html'
+import navHtml from './pict.html'
 import mainHtml from './main.html'
 import footerHtml from './footer.html'
 import { Slider } from './slider/slider'
@@ -42,5 +42,6 @@ let sliderContent = [
         subtitle: '2',
     },
 ]
-let slider = new Slider.Slider(sliderContent)
+
+let slider = new Slider.Slider(sliderContent, 4000)
 document.getElementById('sliderTarget').appendChild(slider.getSliderElem())

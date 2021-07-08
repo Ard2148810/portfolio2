@@ -7,10 +7,10 @@ export module Slider {
         private items: Array<SliderItem>
         private animHandle: NodeJS.Timer
 
-        constructor(items: Array<SliderItem>) {
+        constructor(items: Array<SliderItem>, interval: number) {
             this.createSlider()
             this.setSliderItems(items)
-            this.setAnimating(true)
+            this.setAnimating(true, interval)
         }
 
         private animate(slidingTarget: HTMLElement) {
@@ -30,23 +30,25 @@ export module Slider {
         private createSlider() {
             let elem = document.createElement('div')
             elem.classList.add('slider')
+
             let slideContainer = document.createElement('div')
             slideContainer.classList.add('slider-container')
             slideContainer.dataset.active = '0' // Keep active item index in the slider as data attribute
             elem.appendChild(slideContainer)
+
             this.slideContainerElem = slideContainer
             this.sliderElem = elem
         }
 
         setSliderItems(items: Array<SliderItem>): HTMLElement {
             this.items = items
-            items.push(items[0]) // Add first item at the end for sliding loop effect
+            items.push(items[0]) // Add first item at the end for infinite sliding loop effect
             console.log(items)
             let htmlItems = ''
             items.forEach((item) => {
                 htmlItems += `
                 <div class='slider-item'>
-                    <div class='slider-item-img' style='background: url("${item.imgSrc}")'></div>
+                    <div class='slider-item-img' style='background-image: url("${item.imgSrc}")'></div>
                     <div class='slider-label'>
                         <p>${item.title}</p>
                         <p class='slider-item-subtitle'>${item.subtitle}</p>
@@ -61,17 +63,15 @@ export module Slider {
             return this.sliderElem
         }
 
-        setAnimating(value: boolean) {
+        setAnimating(value: boolean, interval: number) {
             if (value) {
                 this.animHandle = setInterval(
                     this.animate,
-                    3000,
+                    interval,
                     this.slideContainerElem
                 )
-            } else {
-                if (this.animHandle) {
-                    clearInterval(this.animHandle)
-                }
+            } else if (this.animHandle) {
+                clearInterval(this.animHandle)
             }
         }
     }
