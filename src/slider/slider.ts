@@ -43,7 +43,6 @@ export module Slider {
         setSliderItems(items: Array<SliderItem>): HTMLElement {
             this.items = items
             items.push(items[0]) // Add first item at the end for infinite sliding loop effect
-            console.log(items)
             let htmlItems = ''
             items.forEach((item) => {
                 htmlItems += `
