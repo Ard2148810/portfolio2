@@ -49,8 +49,8 @@ export module Slider {
                 <div class='slider-item'>
                     <div class='slider-item-img' style='background-image: url("${item.imgSrc}")'></div>
                     <div class='slider-label'>
-                        <p>${item.title}</p>
-                        <p class='slider-item-subtitle'>${item.subtitle}</p>
+                        <p class='slider-item-title'>${item.title}</p>
+                        <p class='slider-item-subtitle'><a href=${item.subtitle} class='no-decor'>${item.subtitle}</a></p>
                     </div>
                 </div>`
             })
@@ -62,11 +62,11 @@ export module Slider {
             return this.sliderElem
         }
 
-        setAnimating(value: boolean, interval: number) {
+        setAnimating(value: boolean, interval?: number) {
             if (value) {
                 this.animHandle = setInterval(
                     this.animate,
-                    interval,
+                    interval ? interval : 4000,
                     this.slideContainerElem
                 )
             } else if (this.animHandle) {

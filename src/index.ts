@@ -3,7 +3,9 @@ import headerHtml from './header.html'
 import mainHtml from './main.html'
 import footerHtml from './footer.html'
 import { Slider } from './slider/slider'
-import img from './img/navbg.png'
+import techTs from './img/tech-ts.png'
+import techSass from './img/tech-sass.png'
+import techAngular from './img/tech-angular.png'
 
 class App {
     app: HTMLDivElement
@@ -26,21 +28,22 @@ contents.forEach((item) => app.insertHtml(item))
 
 let sliderContent = [
     {
-        imgSrc: img,
-        title: 'Tile',
-        subtitle: 'Subtitle first',
+        imgSrc: techTs,
+        title: 'TypeScript',
+        subtitle: 'https://www.typescriptlang.org/',
     },
     {
-        imgSrc: img,
-        title: 'Another one',
-        subtitle: 'Second subtitle',
+        imgSrc: techSass,
+        title: 'Sass',
+        subtitle: 'https://sass-lang.com/',
     },
     {
-        imgSrc: img,
-        title: 'Even more',
-        subtitle: 'Third subtitle',
+        imgSrc: techAngular,
+        title: 'Angular',
+        subtitle: 'https://angular.io/',
     },
 ]
 
 let slider = new Slider.Slider(sliderContent, 4000)
 document.getElementById('sliderTarget').appendChild(slider.getSliderElem())
+//slider.setAnimating(false)
