@@ -1,6 +1,5 @@
 import './styles/style.sass'
 import headerHtml from './header.html'
-import navHtml from './pict.html'
 import mainHtml from './main.html'
 import footerHtml from './footer.html'
 import { Slider } from './slider/slider'
@@ -22,24 +21,24 @@ class App {
 }
 
 const app = new App()
-let contents = [headerHtml, navHtml, mainHtml, footerHtml]
+let contents = [headerHtml, mainHtml, footerHtml]
 contents.forEach((item) => app.insertHtml(item))
 
 let sliderContent = [
     {
         imgSrc: img,
         title: 'Tile',
-        subtitle: '0',
+        subtitle: 'Subtitle first',
     },
     {
         imgSrc: img,
         title: 'Another one',
-        subtitle: '1',
+        subtitle: 'Second subtitle',
     },
     {
         imgSrc: img,
         title: 'Even more',
-        subtitle: '2',
+        subtitle: 'Third subtitle',
     },
 ]
 
