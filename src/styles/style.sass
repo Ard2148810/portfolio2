@@ -72,10 +72,13 @@ html
         @include wrapper($wrapper-background)
     &-content
         min-height: 0
-        padding: 15px
+        padding: 15px 0
         @include wrapper($wrapper-text)
     &-grow
         min-height: 30vh
+
+.bar-content-spacing
+    padding: 50px 0
         
 .background
     background-repeat: no-repeat
@@ -109,7 +112,6 @@ html
     left: 0
     top: 0
     z-index: 999
-    
 
 .logo
     font-size: 2rem
@@ -126,9 +128,7 @@ html
 
 .nav-content .nav-items
     margin-left: auto
-    
-
-          
+       
 .nav-item
     color: $color-font-primary
     background-color: transparentize(black, $alpha-primary)
@@ -155,9 +155,14 @@ html
     justify-content: center
     align-items: center
 
+.basic-spacing
+    padding: 15px
+
 .text-border
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000
 
+.dark
+    @include primary-colors()
 
 #app
     display: flex
