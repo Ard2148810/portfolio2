@@ -112,6 +112,7 @@ html
     left: 0
     top: 0
     z-index: 999
+    transition: height 200ms
 
 .logo
     font-size: 2rem
@@ -172,6 +173,24 @@ html
     text-decoration: none
     color: inherit   
 
+.nav-top
+    display: flex
+
+.nav-small-hidden
+    display: flex
+
+.menu-btn
+    margin-left: auto
+    display: none
+    justify-content: center
+    flex-direction: column
+    flex: 0 0
+    div
+        width: 35px
+        height: 5px
+        margin: 3px 0
+        background-color: $color-font-primary
+
 #app
     display: flex
     flex-direction: column
@@ -185,3 +204,17 @@ html
 #backImg2
     color: $color-font-primary
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('../img/secbg.png')
+
+@media only screen and (max-width: 600px)
+    .nav-content
+        display: block
+    .nav-items
+        flex-direction: column
+        text-align: center
+    .logo
+        justify-content: left
+    .menu-btn
+        display: flex
+    .nav-small-hidden
+        display: none
+    

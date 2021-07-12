@@ -6,7 +6,6 @@ import { Slider } from './slider/slider'
 import techTs from './img/tech-ts.png'
 import techSass from './img/tech-sass.png'
 import techAngular from './img/tech-angular.png'
-import ghIcon from './img/gh-icon.svg'
 
 class App {
     app: HTMLDivElement
@@ -53,6 +52,12 @@ let sliderContent = [
 
 let slider = new Slider.Slider(sliderContent, 4000)
 document.getElementById('sliderTarget').appendChild(slider.getSliderElem())
-//slider.setAnimating(false)
-//console.log(ghIcon)
-//app.insertIcon('icon-gh', ghIcon)
+
+document.getElementById('navBtn').addEventListener('click', () => {
+    let nav = document.getElementById('navItemContainer')
+    if (nav.classList.contains('nav-small-hidden')) {
+        nav.classList.remove('nav-small-hidden')
+    } else {
+        nav.classList.add('nav-small-hidden')
+    }
+})

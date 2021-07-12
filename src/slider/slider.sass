@@ -1,5 +1,7 @@
 $width: 400px
 $height: 250px
+$width-small: 260px
+$height-small: 190px
     
 .slider
     background-color: #e7e7e7
@@ -43,3 +45,10 @@ $height: 250px
 .no-decor, .no-decor:hover, .no-decor:visited, .no-decor:link, .no-decor:active
     text-decoration: none
     color: inherit
+
+@media only screen and (max-width: 500px)
+    .slider
+        width: $width-small
+    .slider-item-img
+        height: $height-small
+        width: $width-small
