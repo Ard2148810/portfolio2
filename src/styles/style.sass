@@ -103,7 +103,7 @@ html
 
 .header
     @include primary-colors()
-    padding: 10px
+    padding: 6px
     font-size: 1.2em
     position: fixed
     display: flex
@@ -158,11 +158,19 @@ html
 .basic-spacing
     padding: 15px
 
+.rows
+    display: flex
+    flex-direction: row
+
 .text-border
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000
 
 .dark
     @include primary-colors()
+
+.no-decor, .no-decor:hover, .no-decor:visited, .no-decor:link, .no-decor:active
+    text-decoration: none
+    color: inherit   
 
 #app
     display: flex

@@ -6,6 +6,7 @@ import { Slider } from './slider/slider'
 import techTs from './img/tech-ts.png'
 import techSass from './img/tech-sass.png'
 import techAngular from './img/tech-angular.png'
+import ghIcon from './img/gh-icon.svg'
 
 class App {
     app: HTMLDivElement
@@ -19,6 +20,12 @@ class App {
 
     insertHtml(html: string) {
         this.app.innerHTML += html
+    }
+
+    insertIcon(targetClass: string, icon: string) {
+        Array.from(document.getElementsByClassName(targetClass)).forEach(
+            console.log
+        )
     }
 }
 
@@ -47,3 +54,5 @@ let sliderContent = [
 let slider = new Slider.Slider(sliderContent, 4000)
 document.getElementById('sliderTarget').appendChild(slider.getSliderElem())
 //slider.setAnimating(false)
+//console.log(ghIcon)
+//app.insertIcon('icon-gh', ghIcon)

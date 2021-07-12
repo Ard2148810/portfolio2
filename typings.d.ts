@@ -1,6 +1,11 @@
 declare module '*.html' {
-    const content: string
-    export default content
+    const value: string
+    export default value
+}
+
+declare module '*.svg' {
+    const value: string
+    export default value
 }
 
 declare module '*.png' {
