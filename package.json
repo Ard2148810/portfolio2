@@ -18,7 +18,6 @@
     "author": "",
     "license": "ISC",
     "devDependencies": {
-        "@types/lodash": "^4.14.170",
         "css-loader": "^5.2.6",
         "file-loader": "^6.2.0",
         "html-loader": "^2.1.2",

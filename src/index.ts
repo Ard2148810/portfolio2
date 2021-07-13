@@ -1,10 +1,11 @@
 import './styles/style.sass'
 import headerHtml from './header.html'
-import navHtml from './pict.html'
 import mainHtml from './main.html'
 import footerHtml from './footer.html'
 import { Slider } from './slider/slider'
-import img from './img/navbg.png'
+import techTs from './img/tech-ts.png'
+import techSass from './img/tech-sass.png'
+import techAngular from './img/tech-angular.png'
 
 class App {
     app: HTMLDivElement
@@ -19,29 +20,44 @@ class App {
     insertHtml(html: string) {
         this.app.innerHTML += html
     }
+
+    insertIcon(targetClass: string, icon: string) {
+        Array.from(document.getElementsByClassName(targetClass)).forEach(
+            console.log
+        )
+    }
 }
 
 const app = new App()
-let contents = [headerHtml, navHtml, mainHtml, footerHtml]
+let contents = [headerHtml, mainHtml, footerHtml]
 contents.forEach((item) => app.insertHtml(item))
 
 let sliderContent = [
     {
-        imgSrc: img,
-        title: 'Tile',
-        subtitle: '0',
+        imgSrc: techTs,
+        title: 'TypeScript',
+        subtitle: 'https://www.typescriptlang.org/',
     },
     {
-        imgSrc: img,
-        title: 'Another one',
-        subtitle: '1',
+        imgSrc: techSass,
+        title: 'Sass',
+        subtitle: 'https://sass-lang.com/',
     },
     {
-        imgSrc: img,
-        title: 'Even more',
-        subtitle: '2',
+        imgSrc: techAngular,
+        title: 'Angular',
+        subtitle: 'https://angular.io/',
     },
 ]
 
 let slider = new Slider.Slider(sliderContent, 4000)
 document.getElementById('sliderTarget').appendChild(slider.getSliderElem())
+
+document.getElementById('navBtn').addEventListener('click', () => {
+    let nav = document.getElementById('navItemContainer')
+    if (nav.classList.contains('nav-small-hidden')) {
+        nav.classList.remove('nav-small-hidden')
+    } else {
+        nav.classList.add('nav-small-hidden')
+    }
+})

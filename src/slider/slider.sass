@@ -1,16 +1,21 @@
 $width: 400px
 $height: 250px
+$width-small: 260px
+$height-small: 190px
     
 .slider
     background-color: #e7e7e7
     width: $width
     overflow: hidden
-
+    border-radius: 8px
+    transition: box-shadow 300ms
+    
 
 .slider-container
     display: flex
     flex-direction: row
     transition: transform 400ms
+    padding-top: 5px
 
 .notransition
     transition: none !important
@@ -21,10 +26,29 @@ $height: 250px
 .slider-item-img
     height: $height
     width: $width
-    background-size: cover
+    background-size: contain
+    background-position: center
+    background-repeat: no-repeat
 
 .slider-item-subtitle
     font-size: 0.8rem
 
+.slider-item-title
+    font-weight: bold
+
 .slider-label
     padding: 5px
+    margin-top: 5px
+    text-align: center
+    background-color: darken(#e7e7e7, 5%)
+
+.no-decor, .no-decor:hover, .no-decor:visited, .no-decor:link, .no-decor:active
+    text-decoration: none
+    color: inherit
+
+@media only screen and (max-width: 500px)
+    .slider
+        width: $width-small
+    .slider-item-img
+        height: $height-small
+        width: $width-small

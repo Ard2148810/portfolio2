@@ -1,3 +1,4 @@
+@use "sass:color"
 @import 'values'
 
 
@@ -8,6 +9,13 @@
 @mixin secondary-colors()
     color: $color-font-secondary
     background-color: $color-secondary
+
+@mixin wrapper($width)
+    max-width: $width
+
+@function hover-color($color)
+    @return color.adjust($color, $alpha: -0.2)
+
 
 @keyframes fadein
     from
@@ -40,12 +48,10 @@ html
 
 .footer
     @include primary-colors()
-    flex: 0 1 auto
+    @include wrapper($wrapper-background)
     text-align: center
-    padding: 15px
-
-.spacing
-    padding: 15px
+    width: 100%
+    padding: 15px 0
 
 .small-txt
     font-size: 0.5em
@@ -59,9 +65,23 @@ html
 
 .center-text
     text-align: center
+
+.wrap
+    flex-wrap: wrap
     
 .bar
-    min-height: 30vh
+    width: 100%
+    &-full
+        @include wrapper($wrapper-background)
+    &-content
+        min-height: 0
+        padding: 15px 0
+        @include wrapper($wrapper-text)
+    &-grow
+        min-height: 30vh
+
+.bar-content-spacing
+    padding: 40px 0
         
 .background
     background-repeat: no-repeat
@@ -76,24 +96,27 @@ html
     
 .content
     @include secondary-colors()
+    @include wrapper($wrapper-background)
     flex: 1 1 auto
     display: flex
+    width: 100%
+    flex-direction: column
     justify-content: center
+    align-items: center
 
 .header
     @include primary-colors()
-    background-color: 'rgba(0, 0, 0, 0.5)'
-    padding: 10px
+    background-color: transparentize($color-primary, 0.4)
+    padding: 6px
     font-size: 1.2em
-    flex: 0 1 auto
     position: fixed
+    display: flex
+    justify-content: center
     right: 0
     left: 0
     top: 0
-    z-index: 4
-    display: flex
-    flex-direction: row
-    
+    z-index: 999
+    backdrop-filter: blur(5px)
 
 .logo
     font-size: 2rem
@@ -101,12 +124,19 @@ html
     letter-spacing: -0.2em
     text-shadow: 2px 2px rgba(0, 0, 0, 0.5)
 
-.header .nav-items
+.nav-content
+    @include wrapper($wrapper-text)
+    display: flex
+    flex-direction: row
+    flex-grow: 1
+    justify-content: center
+
+.nav-content .nav-items
     margin-left: auto
-          
+       
 .nav-item
     color: $color-font-primary
-    background-color: transparentize(black, 0.7)
+    background-color: transparentize(black, $alpha-primary)
     text-decoration: none
     text-transform: uppercase
     padding: 5px 20px 5px 20px
@@ -115,31 +145,66 @@ html
     border-radius: 9999px
     transition: background-color 200ms
     &:hover
-        background-color: transparentize(darken(black, 10%), 0.5) 
+        background-color: hover-color(black)
     &:active
         color: inherit
     &:visited
         color: inherit
     &-special
-        background-color: transparentize(#ff0000, 0.7)
+        background-color: transparentize($color-special, $alpha-primary)
         &:hover
-            background-color: transparentize(darken(#ff0000, 10%), 0.7)
-
-.wrapper
-    max-width: 1920px
+            background-color: hover-color($color-special)
 
 .center-children
     display: flex
     justify-content: center
     align-items: center
 
+.basic-spacing
+    padding: 15px
+
+.rows
+    display: flex
+    flex-direction: row
+
 .text-border
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000
 
+.dark
+    @include primary-colors()
+
+.no-decor, .no-decor:hover, .no-decor:visited, .no-decor:link, .no-decor:active
+    text-decoration: none
+    color: inherit   
+
+.nav-top
+    display: flex
+
+.nav-small-hidden
+    display: flex
+
+.flex2
+    flex: 2
+
+.flex8
+    flex: 8
+
+.menu-btn
+    margin-left: auto
+    display: none
+    justify-content: center
+    flex-direction: column
+    flex: 0 0
+    div
+        width: 35px
+        height: 5px
+        margin: 3px 0
+        background-color: $color-font-primary
 
 #app
     display: flex
     flex-direction: column
+    align-items: center
     min-height: 100vh
 
 #backImg1
@@ -149,3 +214,18 @@ html
 #backImg2
     color: $color-font-primary
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('../img/secbg.png')
+
+
+@media only screen and (max-width: 600px)
+    .nav-content
+        display: block
+    .nav-items
+        flex-direction: column
+        text-align: center
+    .logo
+        justify-content: left
+    .menu-btn
+        display: flex
+    .nav-small-hidden
+        display: none
+    
